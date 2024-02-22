@@ -1,3 +1,4 @@
+using GreenSaleMVC.BLL.Interfaces;
 using GreenSaleMVC.Data.Interfaces;
 using GreenSaleMVC.DTOs;
 using GreenSaleMVC.Models;
@@ -7,11 +8,12 @@ namespace GreenSaleMVC.Controllers
 {
     public class HomeController : Controller
     {
-        private ICategoryInterface _repo;
+        public ICategoryService CategoryInterface { get; }
 
-        public HomeController(ICategoryInterface categoryInterface)
+        public HomeController(ICategoryService categoryInterface)
         {
-            _repo = categoryInterface;
+            
+            CategoryInterface = categoryInterface;
         }
         public IActionResult Index()
         {
@@ -23,14 +25,12 @@ namespace GreenSaleMVC.Controllers
         }
         public IActionResult AddCategory(AddCategoryDto category)
         {
-            Category category1 = new Category();
-            category1.Name = category.Name;
-            category1.Description = category.Description;
-            category1.CreatedAt = DateTime.Now;
-            category1.UpdatedAt = DateTime.Now;
 
-            _repo.Create(category1);
-            return RedirectToAction("index");
+            CategoryInterface.AddCategory(category);
+            return RedirectToAction("Index");
+
+
+
         }
     }
 }
