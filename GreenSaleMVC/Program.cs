@@ -1,3 +1,5 @@
+using GreenSaleMVC.BLL.Interfaces;
+using GreenSaleMVC.BLL.Services;
 using GreenSaleMVC.Data;
 using GreenSaleMVC.Data.Interfaces;
 using GreenSaleMVC.Data.Repositories;
@@ -11,8 +13,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDB")));
 builder.Services.AddTransient<ICategoryInterface, CategoryRepository>();
-
-
+builder.Services.AddTransient<ICategoryService ,AddCategoryRepository>();
+builder.Services.AddTransient<IFileService,FileService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

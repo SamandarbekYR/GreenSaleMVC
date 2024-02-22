@@ -6,5 +6,8 @@ namespace GreenSaleMVC.Data.Interfaces
     {
         void Create(Category category);
         List<Category> GetAll();
+        void Update(Category category, int id);
+
+        
     }
 }
