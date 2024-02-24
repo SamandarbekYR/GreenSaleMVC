@@ -1,4 +1,4 @@
-﻿using GreenSaleMVC.Models;
+﻿using GreenSaleMVC.Data.Entities.Categories;
 
 namespace GreenSaleMVC.Data.Interfaces
 {
