@@ -1,5 +1,6 @@
-﻿using GreenSaleMVC.Data.Interfaces;
-using GreenSaleMVC.Models;
+﻿using GreenSaleMVC.Data.Entities.Categories;
+using GreenSaleMVC.Data.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace GreenSaleMVC.Data.Repositories
 {
@@ -28,7 +29,7 @@ namespace GreenSaleMVC.Data.Repositories
 
         public List<Category> GetAll()
         {
-            return dbContext.Categories.ToList();
+            return dbContext.Categories.AsNoTracking().ToList();
         }
     }
 }

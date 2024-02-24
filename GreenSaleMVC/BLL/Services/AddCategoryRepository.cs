@@ -1,7 +1,7 @@
 ﻿using GreenSaleMVC.BLL.Interfaces;
+using GreenSaleMVC.Data.Entities.Categories;
 using GreenSaleMVC.Data.Interfaces;
 using GreenSaleMVC.DTOs;
-using GreenSaleMVC.Models;
 
 namespace GreenSaleMVC.BLL.Services
 {
