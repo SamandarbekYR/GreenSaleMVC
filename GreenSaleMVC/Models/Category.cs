@@ -4,11 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace GreenSaleMVC.Models
 {
     [Table("category")]
-    public class Category
+    public class Category:BaseEntity
     {
-        [Key]
-        [Column("id")]
-        public int Id { get; set; }
         [Column("name")]
         public string Name { get; set; } = string.Empty;
         [Column("description")]
