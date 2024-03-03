@@ -15,6 +15,19 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddTransient<ICategoryInterface, CategoryRepository>();
 builder.Services.AddTransient<ICategoryService ,AddCategoryRepository>();
 builder.Services.AddTransient<IFileService,FileService>();
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+builder.Services.AddAuthentication()
+    .AddCookie("Admin", config =>
+    {
+        config.LoginPath = "/admin/auth/login";
+    })
+    .AddCookie("User", config =>
+    {
+        config.LoginPath = "/auth/login";
+    });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,7 +43,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapControllerRoute(
+       name: "admin",
+       pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",
