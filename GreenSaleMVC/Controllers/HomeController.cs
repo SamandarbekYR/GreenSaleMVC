@@ -1,7 +1,6 @@
 using GreenSaleMVC.BLL.Interfaces;
 using GreenSaleMVC.Data.Interfaces;
 using GreenSaleMVC.DTOs;
-using GreenSaleMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GreenSaleMVC.Controllers
@@ -28,9 +27,6 @@ namespace GreenSaleMVC.Controllers
 
             CategoryInterface.AddCategory(category);
             return RedirectToAction("Index");
-
-
-
         }
     }
 }

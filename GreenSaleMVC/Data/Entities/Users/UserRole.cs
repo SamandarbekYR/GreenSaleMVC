@@ -8,5 +8,5 @@ public class UserRole : Auditable
 {
     [Column("name")]
     public string Name { get; set; } = string.Empty;
-    public List<User> Users { get; set; } = new List<User>();
+    public ICollection<User> Users { get; set; } = new List<User>();
 }
