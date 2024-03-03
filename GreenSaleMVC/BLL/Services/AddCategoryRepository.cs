@@ -25,11 +25,7 @@ namespace GreenSaleMVC.BLL.Services
                 Name    = categoryDto.Name,
                 ImagePath = imgUrl
             };
-            categoryInterface.Create(category);
-
-
+          // categoryInterface.Create(category);
         }
-
-        
     }
 }
