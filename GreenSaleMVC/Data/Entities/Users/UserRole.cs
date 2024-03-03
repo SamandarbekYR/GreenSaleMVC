@@ -3,6 +3,7 @@ using GreenSaleMVC.Data.Entities;
 using GreenSaleMVC.Data.Entities.Users;
 using System.ComponentModel.DataAnnotations.Schema;
 
+namespace GreenSaleMVC.Data.Entities.Users;
 [Table("user_role")]
 public class UserRole : Auditable
 {
