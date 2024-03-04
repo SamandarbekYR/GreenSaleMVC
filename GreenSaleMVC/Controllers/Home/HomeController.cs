@@ -8,5 +8,9 @@ namespace GreenSaleMVC.Controllers.Home
         {
             return View();
         }
+        public IActionResult Properties()
+        {
+            return View();
+        }
     }
 }
