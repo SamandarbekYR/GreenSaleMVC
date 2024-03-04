@@ -4,6 +4,7 @@ using GreenSaleMVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GreenSaleMVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240303115023_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -415,16 +418,6 @@ namespace GreenSaleMVC.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("name");
 
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("password_hash");
-
-                    b.Property<string>("PasswordSalt")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("password_salt");
-
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
@@ -443,21 +436,6 @@ namespace GreenSaleMVC.Migrations
                     b.HasIndex("UserRoleId");
 
                     b.ToTable("users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("fb51c596-ffd4-46d0-82fd-50e3dda0d41a"),
-                            CreatedAt = new DateTime(2024, 3, 3, 17, 21, 48, 439, DateTimeKind.Utc).AddTicks(9371),
-                            Email = "SamandarbekYR@gmail.com",
-                            ImagePath = "",
-                            Name = "Samandarbek",
-                            PasswordHash = "",
-                            PasswordSalt = "",
-                            PhoneNumber = "+998500727879",
-                            UpdatedAt = new DateTime(2024, 3, 3, 17, 21, 48, 439, DateTimeKind.Utc).AddTicks(9372),
-                            UserRoleId = new Guid("6fb7cf2e-0c28-45ec-8558-4fdd0cbc59fb")
-                        });
                 });
 
             modelBuilder.Entity("GreenSaleMVC.Data.Entities.Users.UserRole", b =>
@@ -487,10 +465,10 @@ namespace GreenSaleMVC.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("6fb7cf2e-0c28-45ec-8558-4fdd0cbc59fb"),
-                            CreatedAt = new DateTime(2024, 3, 3, 17, 21, 48, 439, DateTimeKind.Utc).AddTicks(9129),
-                            Name = "SuperAdmin",
-                            UpdatedAt = new DateTime(2024, 3, 3, 17, 21, 48, 439, DateTimeKind.Utc).AddTicks(9138)
+                            Id = new Guid("b5233efe-ab17-4f71-888e-f2e54296149f"),
+                            CreatedAt = new DateTime(2024, 3, 3, 16, 50, 22, 905, DateTimeKind.Utc).AddTicks(1482),
+                            Name = "Admin",
+                            UpdatedAt = new DateTime(2024, 3, 3, 16, 50, 22, 905, DateTimeKind.Utc).AddTicks(1489)
                         });
                 });
 

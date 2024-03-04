@@ -14,10 +14,35 @@ namespace GreenSaleMVC.Data
         public DbSet<UserRole> UsersRoles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {  
+        {
+            modelBuilder.Entity<UserRole>(entities =>
+            {
+                UserRole userRole = new UserRole()
+                {
+                    Id = Guid.Parse("6fb7cf2e-0c28-45ec-8558-4fdd0cbc59fb"),
+                    Name = "SuperAdmin",
+                    CreatedAt = DateTime.UtcNow.AddHours(5),
+                    UpdatedAt = DateTime.UtcNow.AddHours(5)
+                };
+
+                entities.HasData(userRole);
+            });
+
             // User Relationship
             modelBuilder.Entity<User>(entity =>
             {
+                User user = new User();
+                user.Id = Guid.NewGuid();
+                user.Name = "Samandarbek";
+                user.Email = "SamandarbekYR@gmail.com";
+                user.PhoneNumber = "+998500727879";
+                user.CreatedAt = DateTime.UtcNow.AddHours(5);
+                user.UpdatedAt = DateTime.UtcNow.AddHours(5);
+                user.UserRoleId = Guid.Parse("6fb7cf2e-0c28-45ec-8558-4fdd0cbc59fb");
+                user.UsersRole = null;
+
+                entity.HasData(user);
+                
                 entity.HasOne(u => u.UsersRole)
                       .WithMany(u => u.Users)
                       .HasForeignKey(u => u.UserRoleId)
@@ -89,6 +114,8 @@ namespace GreenSaleMVC.Data
                       .HasForeignKey(si => si.StorageId)
                       .OnDelete(DeleteBehavior.Cascade);
             });
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
