@@ -1,4 +1,6 @@
 ﻿using GreenSaleMVC.Data.Interfaces;
+using GreenSaleMVC.Data.Interfaces.Messages;
+using GreenSaleMVC.Data.Repositories.Messages;
 
 namespace GreenSaleMVC.Data.Repositories
 {
@@ -19,7 +21,9 @@ namespace GreenSaleMVC.Data.Repositories
         public IStoragePost StoragePost { get; } = new StoragePostRepository(appDb);
 
         public IStorageImages StorageImages { get; } = new StorageImagesRepository(appDb);
-
+       
+        public IMessage Messages { get; } = new MessageRepository(appDb);
+        
         public void Dispose()
         {
             appDb.Dispose();

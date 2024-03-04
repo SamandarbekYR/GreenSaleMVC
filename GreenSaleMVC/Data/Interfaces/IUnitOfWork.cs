@@ -1,4 +1,6 @@
-﻿namespace GreenSaleMVC.Data.Interfaces
+﻿using GreenSaleMVC.Data.Interfaces.Messages;
+
+namespace GreenSaleMVC.Data.Interfaces
 {
     public interface IUnitOfWork  
     {
@@ -10,5 +12,6 @@
         public ISellerPostImages SellerPostImages { get; }
         public IStoragePost StoragePost { get; }
         public IStorageImages StorageImages { get; }
+        public IMessage Messages { get; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using GreenSaleMVC.Data.Entities.Buyers;
 using GreenSaleMVC.Data.Entities.Categories;
+using GreenSaleMVC.Data.Entities.Messages;
 using GreenSaleMVC.Data.Entities.Sellers;
 using GreenSaleMVC.Data.Entities.Storages;
 using GreenSaleMVC.Data.Entities.Users;
@@ -12,6 +13,13 @@ namespace GreenSaleMVC.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UsersRoles { get; set; }
+        public DbSet<BuyerPost> BuyerPosts { get; set; }
+        public DbSet<BuyerPostImages> BuyerPostImages { get; set; }
+        public DbSet<SellerPost> SellerPosts { get; set; }
+        public DbSet<SellerPostImages> SellerPostImages { get; set; }
+        public DbSet<StoragePost> StoragePosts { get; set; }
+        public DbSet<StorageImages> StorageImages { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
