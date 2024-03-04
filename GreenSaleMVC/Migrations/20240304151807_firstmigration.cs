@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GreenSaleMVC.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstMigration : Migration
+    public partial class firstmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -28,6 +28,21 @@ namespace GreenSaleMVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "messages",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    fi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    phone_number = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    letter = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_messages", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "user_role",
                 columns: table => new
                 {
@@ -46,11 +61,13 @@ namespace GreenSaleMVC.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    user_role_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     phone_number = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    password_hash = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    password_salt = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     image_path = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    user_role_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     created_at = table.Column<DateTime>(type: "datetime2", nullable: false),
                     updated_at = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -239,6 +256,16 @@ namespace GreenSaleMVC.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "user_role",
+                columns: new[] { "id", "created_at", "name", "updated_at" },
+                values: new object[] { new Guid("6fb7cf2e-0c28-45ec-8558-4fdd0cbc59fb"), new DateTime(2024, 3, 4, 20, 18, 7, 38, DateTimeKind.Utc).AddTicks(3893), "SuperAdmin", new DateTime(2024, 3, 4, 20, 18, 7, 38, DateTimeKind.Utc).AddTicks(3899) });
+
+            migrationBuilder.InsertData(
+                table: "users",
+                columns: new[] { "id", "created_at", "email", "image_path", "name", "password_hash", "password_salt", "phone_number", "updated_at", "user_role_id" },
+                values: new object[] { new Guid("56ac8149-3bf0-4bf6-9dc4-054551bd31e7"), new DateTime(2024, 3, 4, 20, 18, 7, 38, DateTimeKind.Utc).AddTicks(4086), "SamandarbekYR@gmail.com", "", "Samandarbek", "", "", "+998500727879", new DateTime(2024, 3, 4, 20, 18, 7, 38, DateTimeKind.Utc).AddTicks(4087), new Guid("6fb7cf2e-0c28-45ec-8558-4fdd0cbc59fb") });
+
             migrationBuilder.CreateIndex(
                 name: "IX_buyer_images_buyer_id",
                 table: "buyer_images",
@@ -295,6 +322,9 @@ namespace GreenSaleMVC.Migrations
         {
             migrationBuilder.DropTable(
                 name: "buyer_images");
+
+            migrationBuilder.DropTable(
+                name: "messages");
 
             migrationBuilder.DropTable(
                 name: "seller_images");

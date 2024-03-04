@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GreenSaleMVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240303122148_usercreatead")]
-    partial class usercreatead
+    [Migration("20240304151807_firstmigration")]
+    partial class firstmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -173,6 +173,38 @@ namespace GreenSaleMVC.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("category");
+                });
+
+            modelBuilder.Entity("GreenSaleMVC.Data.Entities.Messages.Message", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("id");
+
+                    b.Property<string>("FI")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("fi");
+
+                    b.Property<string>("Letter")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("letter");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("phone_number");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("title");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("messages");
                 });
 
             modelBuilder.Entity("GreenSaleMVC.Data.Entities.Sellers.SellerPost", b =>
@@ -450,15 +482,15 @@ namespace GreenSaleMVC.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("fb51c596-ffd4-46d0-82fd-50e3dda0d41a"),
-                            CreatedAt = new DateTime(2024, 3, 3, 17, 21, 48, 439, DateTimeKind.Utc).AddTicks(9371),
+                            Id = new Guid("56ac8149-3bf0-4bf6-9dc4-054551bd31e7"),
+                            CreatedAt = new DateTime(2024, 3, 4, 20, 18, 7, 38, DateTimeKind.Utc).AddTicks(4086),
                             Email = "SamandarbekYR@gmail.com",
                             ImagePath = "",
                             Name = "Samandarbek",
                             PasswordHash = "",
                             PasswordSalt = "",
                             PhoneNumber = "+998500727879",
-                            UpdatedAt = new DateTime(2024, 3, 3, 17, 21, 48, 439, DateTimeKind.Utc).AddTicks(9372),
+                            UpdatedAt = new DateTime(2024, 3, 4, 20, 18, 7, 38, DateTimeKind.Utc).AddTicks(4087),
                             UserRoleId = new Guid("6fb7cf2e-0c28-45ec-8558-4fdd0cbc59fb")
                         });
                 });
@@ -491,9 +523,9 @@ namespace GreenSaleMVC.Migrations
                         new
                         {
                             Id = new Guid("6fb7cf2e-0c28-45ec-8558-4fdd0cbc59fb"),
-                            CreatedAt = new DateTime(2024, 3, 3, 17, 21, 48, 439, DateTimeKind.Utc).AddTicks(9129),
+                            CreatedAt = new DateTime(2024, 3, 4, 20, 18, 7, 38, DateTimeKind.Utc).AddTicks(3893),
                             Name = "SuperAdmin",
-                            UpdatedAt = new DateTime(2024, 3, 3, 17, 21, 48, 439, DateTimeKind.Utc).AddTicks(9138)
+                            UpdatedAt = new DateTime(2024, 3, 4, 20, 18, 7, 38, DateTimeKind.Utc).AddTicks(3899)
                         });
                 });
 
