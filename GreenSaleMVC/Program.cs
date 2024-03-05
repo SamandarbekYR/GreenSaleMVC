@@ -1,9 +1,17 @@
+using AutoMapper;
+using GreenSaleMVC.BLL.Common;
 using GreenSaleMVC.BLL.Interfaces;
+using GreenSaleMVC.BLL.Interfaces.Messages;
 using GreenSaleMVC.BLL.Services;
+using GreenSaleMVC.BLL.Services.Bot;
+using GreenSaleMVC.BLL.Services.Messages;
 using GreenSaleMVC.Data;
 using GreenSaleMVC.Data.Interfaces;
 using GreenSaleMVC.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System.Configuration;
+using Telegram.Bot;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,13 +19,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDB")));
-builder.Services.AddTransient<ICategoryInterface, CategoryRepository>();
-builder.Services.AddTransient<ICategoryService ,AddCategoryRepository>();
-builder.Services.AddTransient<IFileService,FileService>();
+        options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDB")));
 
+var botConfig = builder.Configuration.GetSection("BotConfiguration")
+    .Get<BotConfiguration>();
+
+builder.Services.AddTransient<IFileService,FileService>();
+builder.Services.AddTransient<BotService>();
+builder.Services.AddTransient<IMessageService, MessageService>();
+builder.Services.AddTransient<IUnitOfWork,UnitOfWork>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 builder.Services.AddAuthentication()
     .AddCookie("Admin", config =>
     {
@@ -27,6 +40,12 @@ builder.Services.AddAuthentication()
     {
         config.LoginPath = "/auth/login";
     });
+
+var mapConfig = new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new AutoMapperProfile());
+
+});
 
 var app = builder.Build();
 
