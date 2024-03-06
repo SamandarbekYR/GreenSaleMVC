@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
 using GreenSaleMVC.BLL.Interfaces.Messages;
 using GreenSaleMVC.BLL.Services.Bot;
+using GreenSaleMVC.BLL.Services.Category;
 using GreenSaleMVC.Data.Entities.Messages;
 using GreenSaleMVC.Data.Interfaces;
 using GreenSaleMVC.DTOs.Messages;
 
 namespace GreenSaleMVC.BLL.Services.Messages
 {
-    public class MessageService(IUnitOfWork unitOfWork, IMapper mapper, BotService botService) : IMessageService
+    public class MessageService(IUnitOfWork unitOfWork, IMapper mapper, BotService botService) :IMessageService
     {
         public IUnitOfWork _dbSet = unitOfWork;
         public IMapper _mapper = mapper;

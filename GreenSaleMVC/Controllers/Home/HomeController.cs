@@ -30,7 +30,7 @@ namespace GreenSaleMVC.Controllers.Home
         [HttpPost]
         public async Task<IActionResult> SendMessage(AddMessageDto message)
         {
-            if(string.IsNullOrEmpty(message.Letter))
+            if(!string.IsNullOrEmpty(message.Letter))
             {
                 var info = await _messageService.Add(message);
                 if (info.Item2)
@@ -38,9 +38,9 @@ namespace GreenSaleMVC.Controllers.Home
                     return RedirectToAction("Index");
                 }
 
-                return View();
+                return RedirectToAction("Index");
             }
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

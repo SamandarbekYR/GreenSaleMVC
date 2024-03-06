@@ -13,5 +13,6 @@ namespace GreenSaleMVC.Data.Interfaces
         public IStoragePost StoragePost { get; }
         public IStorageImages StorageImages { get; }
         public IMessage Messages { get; }
+        public ICategoryInterface Category { get; }
     }
 }
