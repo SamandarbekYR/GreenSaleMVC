@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GreenSaleMVC.Data.Entities.Messages;
+using GreenSaleMVC.DTOs;
 using GreenSaleMVC.DTOs.Messages;
 
 namespace GreenSaleMVC.BLL.Common
@@ -9,6 +10,7 @@ namespace GreenSaleMVC.BLL.Common
         public AutoMapperProfile()
         {
             CreateMap<Message, AddMessageDto>().ReverseMap();
+            CreateMap<Category, AddCategoryDto>().ReverseMap();
         }
     }
 }

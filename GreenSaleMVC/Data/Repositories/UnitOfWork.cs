@@ -23,6 +23,8 @@ namespace GreenSaleMVC.Data.Repositories
         public IStorageImages StorageImages { get; } = new StorageImagesRepository(appDb);
        
         public IMessage Messages { get; } = new MessageRepository(appDb);
+
+        public ICategoryInterface CategoryInterface { get; } = new CategoryRepository(appDb);
         
         public void Dispose()
         {
