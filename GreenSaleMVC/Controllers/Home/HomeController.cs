@@ -22,8 +22,6 @@ namespace GreenSaleMVC.Controllers.Home
         }
         public async Task<IActionResult> Properties()
         {
-            using CancellationTokenSource cts = new();
-            await _botService.SendMessage("Salom salom", cts.Token);
             return View();
         }
 
