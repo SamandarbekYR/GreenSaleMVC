@@ -17,6 +17,6 @@ public sealed class CategoryService : ICategoryService
     }
     public async ValueTask<(string, bool)> Create(AddCategoryDto categoryDto)
     {
-      
+        return (" ", true);
     }
 }

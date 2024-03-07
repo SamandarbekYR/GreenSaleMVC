@@ -24,7 +24,7 @@ namespace GreenSaleMVC.Data.Repositories
        
         public IMessage Messages { get; } = new MessageRepository(appDb);
 
-        public ICategoryInterface CategoryInterface { get; } = new CategoryRepository(appDb);
+        public ICategoryInterface Category { get; } = new CategoryRepository(appDb);
         
         public void Dispose()
         {
